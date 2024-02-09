@@ -9,8 +9,12 @@ def get_database_connection():
     """
     Establishes and returns a connection to the SQL Server database.
     """
-    connection_string = """DRIVER={ODBC Driver 17 for SQL Server};SERVER=192.168.13.10;
-                           DATABASE=IntegraLive;UID=amog;PWD=Abcd#123;Connection Timeout=30"""
+    connection_string = """DRIVER={ODBC Driver 17 for SQL Server};
+                            SERVER=192.168.13.10;433;
+                            DATABASE=IntegraLive;
+                            UID=amog;
+                            PWD=Abcd#123;
+                            Connection Timeout=30"""
     return pyodbc.connect(connection_string)
 
 def fetch_data_from_database(pms_account_code):
