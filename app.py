@@ -9,7 +9,7 @@ def get_database_connection():
     """
     Establishes and returns a connection to the SQL Server database.
     """
-    connection_string = """DRIVER={SQL Server};SERVER=192.168.13.10;
+    connection_string = """DRIVER={ODBC Driver 17 for SQL Server};SERVER=192.168.13.10;
                            DATABASE=IntegraLive;UID=amog;PWD=Abcd#123"""
     return pyodbc.connect(connection_string)
 
