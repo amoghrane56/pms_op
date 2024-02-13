@@ -9,12 +9,9 @@ def get_database_connection():
     """
     Establishes and returns a connection to the SQL Server database.
     """
-    connection_string = """DRIVER={ODBC Driver 17 for SQL Server};
-                            SERVER=192.168.13.10;433;
-                            DATABASE=IntegraLive;
-                            UID=amog;
-                            PWD=Abcd#123;
-                            Connection Timeout=30"""
+    connection_string = """DRIVER={SQL Server};
+                            SERVER=192.168.13.10;
+                           DATABASE=IntegraLive;UID=amog;PWD=Abcd#123"""
     return pyodbc.connect(connection_string)
 
 def fetch_data_from_database(pms_account_code):
@@ -23,6 +20,7 @@ def fetch_data_from_database(pms_account_code):
     """
     conn = get_database_connection()
     cursor = conn.cursor()
+    
     
     # Use parameterized query to avoid SQL injection
     sql_query = """
@@ -97,7 +95,7 @@ def generate_welcome_letter(pms_account_code):
             # Add more placeholders as needed
         }
         
-        doc = Document(r"C:\Users\amograne\Welcome Letter Folder\welcome_letter_draft.docx")
+        doc = Document(r"D:\pmsOPS\welcome_letter_draft.docx")
         update_placeholders(doc, data)
 
         output_path = f"welcome_letter_{pms_account_code}.docx"
