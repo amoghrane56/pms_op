@@ -6,12 +6,11 @@ from docx.shared import Pt
 from datetime import date, datetime
 
 def get_database_connection():
-    """
-    Establishes and returns a connection to the SQL Server database.
-    """
-    connection_string = """DRIVER={SQL Server};
-                            SERVER=192.168.13.10;
-                           DATABASE=IntegraLive;UID=amog;PWD=Abcd#123"""
+    connection_string = f"""DRIVER={{{st.secrets['DB_DRIVER']}}};
+                            SERVER={st.secrets['DB_SERVER']};
+                            DATABASE={st.secrets['DB_NAME']};
+                            UID={st.secrets['DB_USER']};
+                            PWD={st.secrets['DB_PASSWORD']}"""
     return pyodbc.connect(connection_string)
 
 def fetch_data_from_database(pms_account_code):
