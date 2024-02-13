@@ -95,7 +95,7 @@ def generate_welcome_letter(pms_account_code):
             # Add more placeholders as needed
         }
         
-        doc = Document(r"D:\pmsOPS\welcome_letter_draft.docx")
+        doc = Document("welcome_letter_draft.docx")
         update_placeholders(doc, data)
 
         output_path = f"welcome_letter_{pms_account_code}.docx"
